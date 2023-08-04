@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { setBoard, deleteBoard } from "../reducers/reducer";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Columns from "../components/Column";
 import Sidebar from "../components/Sidebar";
 import openEye from "../assets/Group 3.png";
@@ -11,7 +10,6 @@ import Delete from "../components/Delete";
 
 const MyBoards = function () {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const board = useSelector((state) => state.user.activeBoard);
   const user = useSelector((state) => state.user.user);
   const darkMode = useSelector((state) => state.user.darkMode);
@@ -22,7 +20,6 @@ const MyBoards = function () {
   const [openDelete, setOpenDelete] = useState(false);
 
   useEffect(() => {
-    if (!user.id) navigate("/login");
     dispatch(
       setBoard({
         id: "board1",
